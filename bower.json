@@ -1,0 +1,21 @@
+{
+  "name": "webcoder",
+  "description": "cool project!",
+  "main": "index.js",
+  "authors": [
+    "Igor Anosov"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "normalize-css": "normalize.css#^6.0.0"
+  }
+}
