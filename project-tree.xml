@@ -1,0 +1,63 @@
+<!-- The node tree of the site -->
+
+<site>
+    <header>
+        <logo></logo>
+    </header>
+
+    <section role="container" background="yellow">
+        <booklet>
+            <slider></slider>
+
+            <form>
+                <heading></heading>
+                <row> {5}
+                    <title></title>
+                    <input/>
+                </row>
+                <button type="submit"></button>
+            </form>
+        </booklet>
+    </section>
+
+    <main>
+        <row>
+            <column-1>
+                <img/>
+                <text></text>
+            </column-1>
+
+            <column-2>
+                <mini-slider>
+                    <img/> {5}
+                </mini-slider>
+
+                <tabs>
+                    <tab-1></tab-1>
+
+                    <tab-2>
+                        <col-1>
+                            <progress></progress>
+                            <step-bar></step-bar>
+                            <range-bar></range-bar>
+                        </col-1>
+
+                        <col-2>
+                            <spin-circle></spin-circle>
+                            <stars></stars>
+                        </col-2>
+                    </tab-2>
+                </tabs>
+            </column-2>
+        </row>
+
+        <row>
+            <text view="three-columns"></text>
+        </row>
+    </main>
+
+    <footer>
+        <logo></logo>
+        <info></info>
+    </footer>
+</site>

@@ -12,7 +12,11 @@
 <body>
     <div class="site">
         <!--Include header template via gulp-rigger-->
-        //= template/header.html
+        <header class="main-header" role="banner">
+            <div class="logo main-header__logo">
+                <img src="../img/logo.png" alt="logo" />
+            </div>
+        </header>
 
         <section class="container container--form-include">
             <div class="booklet booklet--centered">
@@ -26,7 +30,7 @@
         <main role="main"></main>
 
         <!--Include footer template via gulp-rigger-->
-        //= template/footer.html
+        <footer role="contentinfo"></footer>
 
     </div><!--.site-->
 </body>

@@ -1,0 +1,47 @@
+/* VARIABLES */
+
+
+/* MIXINS */
+@mixin transition($prop, $time: 0.2s, $anim: ease-out) {
+  -webkit-transition: $prop $time $anim;
+  -moz-transition: $prop $time $anim;
+  -ms-transition: $prop $time $anim;
+  -o-transition: $prop $time $anim;
+  transition: $prop $time $anim;
+}
+
+@mixin transform($prop) {
+  -webkit-transform: $prop;
+  -moz-transform: $prop;
+  -ms-transform: $prop;
+  -o-transform: $prop;
+  transform: $prop;
+}
+
+/* Media breakpoints */
+
+@mixin for-big-desktop-down {
+  @media (max-width: 1799px) { @content; }
+}
+@mixin for-desktop-down {
+  @media (max-width: 1199px) { @content; }
+}
+@mixin for-tablet-landscape-down {
+  @media (max-width: 899px) { @content; }
+}
+@mixin for-phone-only {
+  @media (max-width: 599px) { @content; }
+}
+
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) { @content; }
+}
