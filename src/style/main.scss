@@ -6,7 +6,6 @@
 @import "../../bower_components/owl.carousel/dist/assets/owl.carousel.css";
 @import "../../bower_components/owl.carousel/dist/assets/owl.theme.default.css";
 @import "../../bower_components/components-font-awesome/css/font-awesome.css";
-//@import "../../bower_components/animate.css/animate.css";
 
 
 /*
@@ -18,7 +17,6 @@
 @import "animate";
 
 
-
 /*
 * Fonts
 */
@@ -28,6 +26,10 @@
 @font-face {
   font-family: 'SourceSansPro Light';
   src: url('../fonts/source-sans-pro-light.woff') format('woff');
+}
+@font-face {
+  font-family: 'SourceSansPro ExtraLight';
+  src: url('../fonts/SourceSansPro-ExtraLight.woff') format('woff');
 }
 
 @font-face {
@@ -51,14 +53,17 @@ html {
   @include for-tablet-landscape-down {
     font-size: 12px;
   }
+  @include for-phone-only {
+    font-size: 10px;
+  }
 }
 
 body {
-  font-family: 'SourceSansPro Light';
+  font-family: 'SourceSansPro Light', sans-serif;
   font-size: 14px;
   color: $mainColor;
 }
-*, *:before, *:after {
+*, *::before, *::after {
   box-sizing: inherit;
 }
 
@@ -78,7 +83,14 @@ h5 {
   font-size: 1rem; // 14px
 }
 h6 {
-  font-size: 0.785rem; // 11px
+  font-size: .785rem; // 11px
+}
+
+input,
+select,
+textarea,
+button {
+  outline: none;
 }
 
 /**************\
@@ -97,7 +109,7 @@ h6 {
 }
 
 .main-header__logo {
-  width: 280px;
+  width: 20rem;
   margin: 0 auto;
 }
 
@@ -121,7 +133,7 @@ h6 {
   flex-flow: row wrap;
   border-radius: 3px;
   background-color: #f8f8f8;
-  box-shadow: 0 0 4px 0 rgba(50, 50, 50, 0.75);
+  box-shadow: 0 0 4px 0 rgba(50, 50, 50, .75);
 
   @include for-desktop-up {
     width: 960px;
@@ -201,11 +213,11 @@ h6 {
     span {
       width: 11px;
       height: 11px;
-      background-color: rgba(0,0,0,0.8);
-      box-shadow: 0 0 3px 1px rgba(255,255,255,0.3);
+      background-color: rgba(0,0,0,.8);
+      box-shadow: 0 0 3px 1px rgba(255,255,255,.3);
     }
 
-    &.active span:after {
+    &.active span::after {
       @extend .yellow-gradient;
       position: absolute;
       content: '';
@@ -227,67 +239,96 @@ h6 {
 \**************/
 
 .booklet__page--form {
-  padding: 20px 38px 20px 20px;
+  padding: 1.427rem 2.714rem 1rem 1.427rem;
 }
 
 .form-heading {
   position: relative;
   color: $colorYellow;
-  margin-bottom: 30px;
+  margin-bottom: 11px;
 
-  &:before {
+  &::before {
     content: '';
     position: absolute;
     height: 0;
     width: 100%;
     top: 0;
     left: 0;
-    box-shadow: 0 14px 5px 10px rgba(248, 248, 248, 0.6);
+    box-shadow: 0 14px 5px 10px rgba(248, 248, 248, .6);
   }
 }
 
 .form__table {
   width: 100%;
+  font-size: 18px;
 
   th {
     width: 20%;
-    font-size: 18px;
     text-align: left;
     vertical-align: middle;
+    text-transform: capitalize;
   }
   
   td {
     width: 80%;
+    padding: 6px 0;
+  }
+
+  p {
+    margin-bottom: 15px;
   }
 }
 
 .form__flexed-cell {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   > div {
     align-self: center;
+    margin-top: 7px;
+    margin-bottom: 7px;
+
+    &:not(:last-child) {
+      //margin-right: 15px;
+    }
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form__flexed-cell--grow {
+  margin-right: -5px;
+  margin-left: -5px;
+
+  > div {
+    flex-grow: 1;
+    margin-right: 5px;
+    margin-left: 5px;
   }
 }
 
 .switch-btn {
-  width: 96px;
-  height: 36px;
-  border-radius: 20px;
-  box-shadow: 0 0 1px 1px #8f661f;
+  width: 95px;
+  height: 35px;
+  border-radius: $formBorderRadius;
+  box-shadow: 0 0 1px 0 #8f661f;
+  border: 1px solid #8f661f;
 
   label {
     position: relative;
     width: 50%;
     height: 100%;
     cursor: pointer;
-    @include linearGradient(#fff, #e6e7e7);
+    @include linearGradient($colorLight, darken($colorLight, 12%));
 
     &:active {
-      @include linearGradient(#e6e7e7, #fff);
+      @include linearGradient(darken($colorLight, 12%), $colorLight);
     }
 
-    &:nth-of-type(1):after {
+    &:nth-of-type(1)::after {
       content: '';
       display: block;
       position: absolute;
@@ -295,11 +336,11 @@ h6 {
       right:0;
       height: 100%;
       width: 1px;
-      background-color: rgba(0,0,0,0.2);
+      background-color: rgba(0,0,0,.2);
     }
 
-    &[for^="female"]:before,
-    &[for^="male"]:before {
+    &[for^="female"]::before,
+    &[for^="male"]::before {
       content: '';
       position: absolute;
       top: 50%;
@@ -310,10 +351,10 @@ h6 {
       transform: translate(-50%, -50%);
     }
 
-    &[for^="female"]:before {
+    &[for^="female"]::before {
       background-position: 18px 0;
     }
-    &[for^="male"]:before {
+    &[for^="male"]::before {
       background-position: 18px 30px;
     }
   }
@@ -324,10 +365,10 @@ h6 {
     &:checked + label {
       background: 0 0;
 
-      &[for^="female"]:before {
+      &[for^="female"]::before {
         background-position: 0 0;
       }
-      &[for^="male"]:before {
+      &[for^="male"]::before {
         background-position: 0 30px;
       }
     }
@@ -339,40 +380,142 @@ h6 {
   flex-wrap: nowrap;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
-  box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+  border-radius: $formBorderRadius;
+  box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, .5);
   @include linearGradient(#ff8a1e, #ffac03);
   overflow: hidden;
 }
 
+.looking-for i {
+  font-size: 16px;
+  transform: rotateY(180deg);
+}
 
+.form__input-wrapper {
 
+}
 
+.form__item {
+  width: 100%;
+  height: 35px;
+  border: 1px groove $borderColor;
+  border-radius: $formBorderRadius;
+  box-shadow: inset 1px 1px 2px 0 rgba(0,0,0,.6);
+  @include linearGradient(darken($colorLight, 12%), $colorLight);
+  color: $mainColor;
+  font-size: 16px;
+  padding: 5px 15px 2px;
+  cursor: pointer;
+  transition: all .2s ease-out;
+  appearance: none;
 
+  &:focus {
+    //background-position: 0 100%;
+    @include linearGradient($colorLight, $colorLight);
+  }
 
+  &.error {
+    border: 1px solid rgba(255,0,0,.5);
+  }
+}
 
+.form__select-wrapper {
+  position: relative;
 
+  select {
+    padding-right: 40px;
+  }
 
+  &::after {
+    content: '\25BC';
+    position: absolute;
+    top: 1px;
+    right: 0;
+    bottom: 1px;
+    padding: .4em .8em;
+    border: 1px solid $borderColor;
+    border-top-right-radius: $formBorderRadius;
+    border-bottom-right-radius: $formBorderRadius;
+    pointer-events: none;
+    @include linearGradient($colorLight, darken($colorLight, 12%));
+    font-size: 16px;
+  }
 
+  &:active::after {
+    @include linearGradient(darken($colorLight, 12%), $colorLight);
+  }
+}
 
+.form__checkbox-wrapper {
+  display: block;
 
+  label {
+    position: relative;
+    display: block;
+    padding-left: 25px;
+    cursor: pointer;
 
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      display: block;
+      width: 14px;
+      height: 14px;
+      @include linearGradient($colorLight, darken($colorLight, 12%));
+      border-style: solid;
+      border-width: 2px;
+      border-top-color: $borderColor;
+      border-right-color: darken($borderColor, 15%);
+      border-bottom-color: darken($borderColor, 15%);
+      border-left-color: $borderColor;
+      transition: all .3s ease-in;
+    }
+  }
 
+  input {
+    display: none;
 
+    &:checked + label::before {
+      @include linearGradient(adjust_hue($colorYellow, 15deg), $colorYellow);
+      box-shadow: inset -1px -1px 1px 0 rgba(0, 0, 0, .2);
+    }
+  }
+}
 
+.form__radio-wrapper {
+  @extend .form__checkbox-wrapper;
 
+  label::before {
+    border-radius: 50%;
+  }
+}
 
+.form__submit-button {
+  display: block;
+  width: 100%;
+  background: #bfd255;
+  background: -moz-linear-gradient(top,  #bfd255 0%, #8eb92a 25%, #72aa00 26%, #9ecb2d 200%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bfd255), color-stop(50%,#8eb92a), color-stop(51%,#72aa00), color-stop(100%,#9ecb2d)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #bfd255 0%, #8eb92a 25%,#72aa00 26%,#9ecb2d 150%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #bfd255 0%,#8eb92a 25%, #72aa00 26%,#9ecb2d 150%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #bfd255 0%,#8eb92a 25%, #72aa00 26%,#9ecb2d 150%); /* IE10+ */
+  background: linear-gradient(to bottom,  #bfd255 0%,#8eb92a 25%, #72aa00 26%,#9ecb2d 150%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=0 ); /* IE6-9 */
+  background-size: 100% 200%;
+  border: 1px solid #BFD782;
+  border-radius: 38px;
+  color: #fff;
+  cursor: pointer;
+  overflow: hidden;
+  text-transform: capitalize;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
+  font-family: 'SourceSansPro ExtraLight', 'SourceSansPro Light', sans-serif;
+  font-size: 3.43rem;
+  transition: background .5s ease-out;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  &:hover {
+    background-position: 0 100%;
+  }
+}

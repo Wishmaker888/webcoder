@@ -2,11 +2,14 @@
 $sliderHeight: 33.57rem;
 $mainColor: #4e4e4e;
 $colorYellow: #ff800c;
+$colorLight: #fff;
+$borderColor: #d8d8d8;
+$formBorderRadius: 20px;
 
 
 /* MIXINS */
 @mixin linearGradient($startColor, $endColor) {
-  background-color: $startColor;
+  background: $startColor;
   background: -webkit-linear-gradient($startColor, $endColor);
   background: -moz-linear-gradient($startColor, $endColor);
   background: -o-linear-gradient($startColor, $endColor);

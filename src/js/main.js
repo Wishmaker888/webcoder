@@ -7,10 +7,6 @@
 'use script';
 
 (function($){
-
-
-
-
     $(document).ready(function() {
         $('.owl-carousel').owlCarousel({
             items: 1,
@@ -18,5 +14,9 @@
             animateIn: 'flipInY',
             smartSpeed: 450
         });
+
+        $('.form__submit-button').hover(function() {
+            $(this).toggleClass('pulse');
+        })
     });
 })(jQuery);
