@@ -11,7 +11,7 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
     rimraf = require('rimraf'),
-    browserSync = require("browser-sync"),
+    browserSync = require('browser-sync'),
     reload = browserSync.reload;
 
 var path = {
@@ -69,11 +69,10 @@ gulp.task('js:build', function () {
 
 gulp.task('style:build', function () {
     gulp.src(path.src.style)
-        // .pipe(rigger())
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(prefixer())
-        // .pipe(cssmin())
+        .pipe(cssmin())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.build.css))
         .pipe(reload({stream: true}));
@@ -96,12 +95,19 @@ gulp.task('fonts:build', function() {
         .pipe(gulp.dest(path.build.fonts))
 });
 
+// Move font-awesome fonts folder to css compiled folder
+gulp.task('icons:build', function() {
+    return gulp.src('bower_components/components-font-awesome/fonts/**.*')
+        .pipe(gulp.dest(path.build.fonts));
+});
+
 // Build all tasks
 gulp.task('build', [
     'html:build',
     'js:build',
     'style:build',
     'fonts:build',
+    'icons:build',
     'image:build'
 ]);
 

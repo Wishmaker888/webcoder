@@ -1,21 +1,29 @@
 /* VARIABLES */
+$sliderHeight: 33.57rem;
+$mainColor: #4e4e4e;
+$colorYellow: #ff800c;
 
 
 /* MIXINS */
-@mixin transition($prop, $time: 0.2s, $anim: ease-out) {
-  -webkit-transition: $prop $time $anim;
-  -moz-transition: $prop $time $anim;
-  -ms-transition: $prop $time $anim;
-  -o-transition: $prop $time $anim;
-  transition: $prop $time $anim;
+@mixin linearGradient($startColor, $endColor) {
+  background-color: $startColor;
+  background: -webkit-linear-gradient($startColor, $endColor);
+  background: -moz-linear-gradient($startColor, $endColor);
+  background: -o-linear-gradient($startColor, $endColor);
+  background: linear-gradient($startColor, $endColor);
 }
 
-@mixin transform($prop) {
-  -webkit-transform: $prop;
-  -moz-transform: $prop;
-  -ms-transform: $prop;
-  -o-transform: $prop;
-  transform: $prop;
+
+/* EXTENDS */
+.yellow-gradient {
+  background-color: rgba(255,207,13,1);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(255,209,13,1) 0%, rgba(255,163,0,1) 100%); /* ff3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,209,13,1)), color-stop(100%, rgba(255,163,0,1))); /* safari4+,chrome */
+  background:-webkit-radial-gradient(center, ellipse cover, rgba(255,209,13,1) 0%, rgba(255,163,0,1) 100%); /* safari5.1+,chrome10+ */
+  background: -o-radial-gradient(center, ellipse cover, rgba(255,209,13,1) 0%, rgba(255,163,0,1) 100%); /* opera 11.10+ */
+  background: -ms-radial-gradient(center, ellipse cover, rgba(255,209,13,1) 0%, rgba(255,163,0,1) 100%); /* ie10+ */
+  background:radial-gradient(ellipse at center, rgba(255,209,13,1) 0%, rgba(255,163,0,1) 100%); /* w3c */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd10d', endColorstr='#ffa300',GradientType=1 ); /* ie6-9 */
 }
 
 /* Media breakpoints */
