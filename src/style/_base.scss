@@ -4,7 +4,9 @@ $mainColor: #4e4e4e;
 $colorYellow: #ff800c;
 $colorLight: #fff;
 $borderColor: #d8d8d8;
+$linksColor: #ffc28c;
 $formBorderRadius: 20px;
+$mainGap: 20px;
 
 
 /* MIXINS */
@@ -16,6 +18,11 @@ $formBorderRadius: 20px;
   background: linear-gradient($startColor, $endColor);
 }
 
+@mixin columnCount($count: 1) {
+  -webkit-column-count: $count;
+  -moz-column-count: $count;
+  column-count: $count;
+}
 
 /* EXTENDS */
 .yellow-gradient {
@@ -55,4 +62,26 @@ $formBorderRadius: 20px;
 }
 @mixin for-big-desktop-up {
   @media (min-width: 1800px) { @content; }
+}
+
+/* HELPERS */
+
+.pull-left {
+  float: left;
+}
+
+.pull-rigth {
+  float: right;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  zoom: 1; /* For IE 6/7 */
 }

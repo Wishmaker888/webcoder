@@ -6,6 +6,7 @@
 @import "../../bower_components/owl.carousel/dist/assets/owl.carousel.css";
 @import "../../bower_components/owl.carousel/dist/assets/owl.theme.default.css";
 @import "../../bower_components/components-font-awesome/css/font-awesome.css";
+@import "../../bower_components/tether-tooltip/dist/css/tooltip-theme-arrows.css";
 
 
 /*
@@ -86,11 +87,61 @@ h6 {
   font-size: .785rem; // 11px
 }
 
+
 input,
 select,
 textarea,
 button {
   outline: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+p,
+ol,
+ul {
+  line-height: 1.5;
+}
+
+blockquote {
+  position: relative;
+  padding: 0 2.142rem;
+  color: #9a9a9a;
+  font-style: italic;
+  line-height: 1.2;
+  margin-bottom: $mainGap;
+
+  &::before,
+  &::after {
+    position: absolute;
+    font-family: 'SourceSansPro ExtraLight';
+    font-size: 4rem;
+    line-height: 20px;
+  }
+
+  &::before {
+    top: 5px;
+    left: 0;
+    content: '\201C';
+  }
+
+  &::after {
+    right: 15px;
+    bottom: -20px;
+    content: '\201D';
+  }
+}
+
+a {
+  color: $linksColor;
+  transition: color 0.1s ease-out;
+
+  &:hover {
+    color: darken($linksColor, 8%);
+  }
 }
 
 /**************\
@@ -125,14 +176,15 @@ button {
 
 .container--form-include {
   @extend .yellow-gradient;
-  padding: 15px;
+  padding: $mainGap;
 }
 
 .booklet {
+  position: relative;
   display: flex;
   flex-flow: row wrap;
   border-radius: 3px;
-  background-color: #f8f8f8;
+  //background-color: #f8f8f8;
   box-shadow: 0 0 4px 0 rgba(50, 50, 50, .75);
 
   @include for-desktop-up {
@@ -141,6 +193,27 @@ button {
   @include for-desktop-down {
     width: 100%;
   }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    width: 50%;
+    height: 18px;
+    border-radius: 2px;
+    box-shadow: 0 18px 3px 0 rgba(0,0,0,0.25);
+  }
+
+  &::before {
+    left: 20px;
+    transform: rotate(-2deg) skewX(-28deg);
+  }
+
+  &::after {
+    right: 20px;
+    transform: rotate(2deg) skewX(28deg);
+  }
 }
 
 .booklet--centered {
@@ -148,9 +221,12 @@ button {
 }
 
 .booklet__page {
+  position: relative;
   flex-grow: 1;
   flex-shrink: 1;
+  background-color: #f8f8f8;
   overflow: hidden;
+  z-index: 1;
 
   .slider {
     border-top-left-radius: 3px;
@@ -238,7 +314,7 @@ button {
   #BOOKLET form
 \**************/
 
-.booklet__page--form {
+.booklet__page--form-wrapper {
   padding: 1.427rem 2.714rem 1rem 1.427rem;
 }
 
@@ -276,6 +352,7 @@ button {
 
   p {
     margin-bottom: 15px;
+    line-height: 1;
   }
 }
 
@@ -519,3 +596,162 @@ button {
     background-position: 0 100%;
   }
 }
+
+.form__alert-icon {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: FontAwesome;
+    font-size: 20px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
+  }
+}
+
+.form__alert-icon--error::after {
+  content: '\f00d';
+  color: #ff5d55;
+}
+
+.form__alert-icon--success::after {
+  content: '\f00c';
+  color: #9ece18;
+}
+
+.tooltip {
+  z-index: 999;
+}
+
+
+
+/**************\
+  #MAIN CONTENT
+\**************/
+
+
+
+main {
+  width: 100%;
+  margin: 0 auto;
+
+  @include for-desktop-up {
+    max-width: 960px;
+  }
+}
+
+.site-content {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: $mainGap;
+  padding-bottom: $mainGap;
+
+  @include for-desktop-down {
+    padding-right: $mainGap;
+    padding-left: $mainGap;
+  }
+
+  p {
+    line-height: 1.5;
+  }
+}
+
+.site-content__heading {
+  margin: $mainGap 0;
+}
+
+.site-content__col {
+  margin-bottom: 2rem;
+}
+
+.site-content__col--50 {
+  flex: 1 1 50%;
+
+  @include for-tablet-landscape-down {
+    flex-basis: 100%;
+  }
+}
+
+.image-round-wrapper {
+  width: 175px;
+  height: 175px;
+  margin-right: 20px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+@supports(shape-outside: circle(50%)) {
+  .image-round-wrapper {
+    shape-outside: circle(50%);
+  }
+}
+
+.image-round-wrapper img {
+  width: 100%;
+  height: 100%;
+}
+
+@supports(object-fit: cover) {
+  .image-round-wrapper img {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    object-position: 45% 50%;
+  }
+}
+
+.site-content__long-text {
+  p,
+  ol {
+    margin-bottom: 1.785rem;
+  }
+
+  ol {
+    padding-left: $mainGap;
+  }
+}
+
+@supports(column-count: 3) {
+  .site-content__long-text {
+    @include columnCount(3);
+
+    @include for-tablet-landscape-down {
+      @include columnCount(2);
+    }
+    @include for-phone-only {
+      @include columnCount(1);
+    }
+  }
+}
+
+.preformatted {
+  padding-left: 25px;
+  color: $linksColor;
+  border-left: 3px solid $linksColor;
+}
+
+.read-more {
+  position: relative;
+  padding-left: 12px;
+
+  &::before {
+    position: absolute;
+    content: '\25B6';
+    left: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+

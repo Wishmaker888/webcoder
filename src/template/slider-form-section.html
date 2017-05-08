@@ -9,7 +9,7 @@
             </div>
         </div><!-- .slider  -->
 
-        <div class="booklet__page booklet__page--form">
+        <div class="booklet__page booklet__page--form-wrapper">
             <h1 class="form-heading">Join us now. It's FREE</h1>
             <form action="" class="form">
                 <table class="form__table">
@@ -49,7 +49,9 @@
                     <tr>
                         <th>name</th>
                         <td>
-                            <div class="form__input-wrapper">
+                            <div class="form__input-wrapper form__alert-icon form__alert-icon--error"
+                                 data-tooltip="Enter your name"
+                                 data-tooltip-position="right middle">
                                 <input type="text" name="name" class="form__item error"/>
                             </div>
                         </td>
@@ -81,14 +83,16 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="form__select-wrapper">
-                                        <select name="" id="" class="form__item">
-                                            <option value="" selected disabled>Year</option>
-                                            <option value="">1980</option>
-                                            <option value="">1990</option>
-                                            <option value="">2000</option>
-                                            <option value="" disabled>...</option>
-                                        </select>
+                                    <div class="form__alert-icon form__alert-icon--success">
+                                        <div class="form__select-wrapper">
+                                            <select name="" id="" class="form__item">
+                                                <option value="" selected disabled>Year</option>
+                                                <option value="">1980</option>
+                                                <option value="">1990</option>
+                                                <option value="">2000</option>
+                                                <option value="" disabled>...</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
