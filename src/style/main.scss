@@ -95,11 +95,6 @@ button {
   outline: none;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
 p,
 ol,
 ul {
@@ -258,7 +253,7 @@ a {
 }
 
 .booklet .owl-carousel img {
-  width: auto;
+  width: initial;
 }
 
 @supports(object-fit: cover) {
